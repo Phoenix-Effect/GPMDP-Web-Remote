@@ -31,10 +31,16 @@ var talkToIt = {
 var authenticated = false;
 
 //Send the initial connection command
+var authIt = () => {
+    console.log('Auth it socket', this.socket);
+};
+
+/*
 ws.on('open', () => {
     //sends initial connect command
     ws.send(JSON.stringify(talkToIt));
 });
+*/
 
 //this function takes care of sending commands to the music player
 var sendCommands = () => {
@@ -73,7 +79,7 @@ var sendHttpCommand = (command) =>{
 
 };
 
-
+/*
 //How to handle data that is returned
 ws.on('message', (data) => {
 
@@ -83,17 +89,22 @@ ws.on('message', (data) => {
     //Authentication
     if(data.channel === "connect"){
         {
-            prompt.start();
-            console.log(data.payload);
+            //prompt.start();
+            //console.log(data.payload);
             //Prompt user to enter code if required
             if(data.payload === "CODE_REQUIRED") {
+
+                authIt();
+                /*
                 prompt.get(['code'], (err, result) => {
                     talkToIt.arguments.push(result.code);
                     console.log("Code Insert" , talkToIt);
                     ws.send(JSON.stringify(talkToIt));
                 });
+                */
 
                 //This means code entered, now to enter the response password
+/*
             } else{
                 talkToIt.arguments.pop();
                 talkToIt.arguments.push(data.payload);
@@ -116,7 +127,7 @@ ws.on('message', (data) => {
     }
 });
 
-
+*/
 
 // Start all the GUI part
 app.use(express.static(publicPath));
@@ -127,6 +138,8 @@ io.on('connection', (socket) => {
     if(!authenticated){
         ws.on('open', () => {
             ws.send(JSON.stringify(talkToIt));
+            authIt.AuthData = "Auth data from within the client socket";
+            authIt.socket = socket;
         });
     } else {
       //  renderRemote();
