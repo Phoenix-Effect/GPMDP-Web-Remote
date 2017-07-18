@@ -25,7 +25,7 @@
 
     <link rel="stylesheet" href="player/custom.css" type="text/css">
 
-
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="stylesheet" href="player/bootstrap.css" type="text/css">
   <link rel="stylesheet" href="player/mediaelementplayer.css" type="text/css">
   <link rel="stylesheet" href="player/mep.css" type="text/css">
@@ -43,7 +43,7 @@
   <!-- content -->
   <div id="content" class="app-content white bg box-shadow-z2" role="main">
 
-    <div class="app-footer app-player">
+    <div class="app-footer app-player grey">
       <div class="playlist has-artwork" style="width:100%">
         <span class="mejs-offscreen">Audio Player</span>
         <div id="mep_0" class="mejs-container mejs-audio" tabindex="0" role="application" aria-label="Audio Player" style="width: 100%; height: 40px;">
@@ -53,18 +53,20 @@
             </div>
             <div class="mejs-layers">
               <div class="mejs-poster mejs-layer" style="display: none; width: 100%; height: 40px;"></div>
-              <div class="mejs-track-actions"><button class="mejs-like-button btn btn-sm no-bg btn-icon" track-id="item-1"></button></div>
+              <div class="mejs-track-actions">
+                <button class="mejs-like-button btn btn-sm no-bg btn-icon" track-id="item-1">
+              </button></div>
               <a class="mejs-track-artwork" href="http://localhost:8090/track.detail.html" style="background-image: url(&quot;https://lh3.googleusercontent.com/UxKcwF-01j1rDHSAfReoNyI8keNxG9hA5CiHD3ljor-C-dlqiE-YP6a07l2dbMiZcCPF8-45wA&quot;);"></a>
-              <div class="mejs-track-details"><span class="mejs-track-title">Moonlight (Original Mix)</span><span class="mejs-track-author">Mladen Mande</span></div>
+              <div class="mejs-track-details"><span class="mejs-track-title">No data</span><span class="mejs-track-author">No data</span></div>
               <div class="mejs-track-source"><i></i></div>
               <div class="mejs-overlay-error mejs-layer" style="width: 100%; height: 40px; display: block;">
                 <div class="mejs-error">Oh snap, there was a playback error!</div>
               </div>
             </div>
             <div class="mejs-controls">
-              <div class="mejs-button mejs-previous-button mejs-previous"><button type="button" aria-controls="mep_0" title="Previous Track"></button></div>
-              <div class="mejs-button mejs-playpause-button mejs-play"><button type="button" aria-controls="mep_0" title="Play" aria-label="Play"></button></div>
-              <div class="mejs-button mejs-next-button mejs-next"><button type="button" aria-controls="mep_0" title="Next Track"></button></div>
+              <div onclick="prevSong();" class="mejs-button mejs-previous-button mejs-previous"><button type="button" aria-controls="mep_0" title="Previous Track"></button></div>
+              <div onclick="playPause();" class="mejs-button mejs-playpause-button mejs-play"><button type="button" aria-controls="mep_0" title="Play" aria-label="Play"></button></div>
+              <div onclick="nextSong();" class="mejs-button mejs-next-button mejs-next"><button type="button" aria-controls="mep_0" title="Next Track"></button></div>
               <div class="mejs-time-rail" style="width: 100%;"><span class="mejs-time-total mejs-time-slider" style="width: 1147px;"><span class="mejs-time-buffering" style="display: none;"></span><span class="mejs-time-loaded"></span><span class="mejs-time-current"></span><span class="mejs-time-handle"></span><span class="mejs-time-float"><span class="mejs-time-float-current">00:00</span><span class="mejs-time-float-corner"></span></span></span></div>
               <div class="mejs-time" role="timer" aria-live="off"><span class="mejs-currenttime">00:00</span><span class="mejs-time-separator"> / </span><span class="mejs-duration">00:00</span></div>
               <div class="mejs-button mejs-volume-button mejs-mute">

@@ -632,6 +632,7 @@
   }
 }
 
+/*
 @media (max-width: 767px) {
   .mejs-volume-button,
   .mejs-time,
@@ -653,4 +654,13 @@
   	min-width: auto;
   	right: 120px;
   }
+}
+*/
+@media (max-width: 767px) {
+	.mejs-volume-button,
+
+	.mejs-repeat-button,
+	.mejs-shuffle-button {
+		display: none !important;
+	}
 }
