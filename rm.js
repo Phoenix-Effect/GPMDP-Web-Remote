@@ -39,14 +39,18 @@ var currentDataObj = {};
 var currentData = (data) => {
     if(data.channel === 'track'){
         currentDataObj.title = data.payload.title;
-        console.log(currentDataObj);
+        currentDataObj.artist = data.payload.artist;
+        currentDataObj.album = data.payload.album;
+        currentDataObj.albumArt = data.payload.albumArt;
+       // console.log(currentDataObj);
+        console.log(data);
+    }
 
-        try{
-            currentUser.socket.emit('currentData', currentDataObj);
-        }
-        catch(err){
-            console.log('No user connected at the moment');
-        }
+    try{
+        currentUser.socket.emit('currentData', currentDataObj);
+    }
+    catch(err){
+        console.log('No user connected at the moment');
     }
 
 /*
