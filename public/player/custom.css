@@ -1,3 +1,8 @@
+body{
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
 .mejs-overlay-error.mejs-layer{
     display: none !important;
 }

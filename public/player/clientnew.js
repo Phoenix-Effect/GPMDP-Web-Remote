@@ -30,6 +30,7 @@ socket.on('currentData', (data) =>{
     document.getElementsByClassName("mejs-track-title")[0].innerText = data.title;
     document.getElementsByClassName("mejs-track-author")[0].innerText = data.artist;
     document.getElementsByClassName("mejs-track-artwork")[0].style.backgroundImage = 'url('+data.albumArt+')';
+    document.body.style.backgroundImage = 'url('+data.albumArt+')';
 });
 
 //emit stuff
