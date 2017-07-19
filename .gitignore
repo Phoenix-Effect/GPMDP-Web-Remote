@@ -5,3 +5,4 @@ node_modules/
 public/socket.io/
 
 output.txt
+package-lock.json
