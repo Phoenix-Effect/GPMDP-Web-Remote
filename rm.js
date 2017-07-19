@@ -27,13 +27,10 @@ var talkToIt = {
     arguments: ["GM-Remote"]
 };
 
-var currentUser = () => {
-    console.log(currentUser.socket);
-};
-
 //Used to check if the code is authenticated or not
 var authenticated = false;
 var currentDataObj = {};
+var currentUser = [];
 
 //Latest content
 var currentData = (data) => {
@@ -60,27 +57,32 @@ var currentData = (data) => {
     }
 
     try{
-        currentUser.socket.emit('currentData', currentDataObj);
+        currentUser.forEach( (socket) => {
+            socket.emit('currentData', currentDataObj);
+        });
     }
     catch(err){
         console.log('No user connected at the moment');
     }
 };
 
-
-
 //Send the initial connection command
 var authIt = (data) => {
     console.log(authIt.AuthData);
     if(data.payload === "CODE_REQUIRED") {
         console.log('Getting code from client');
-        currentUser.socket.emit('getCode', undefined);
+        currentUser.forEach((socket) => {
+            socket.emit('getCode', undefined);
+        });
 
-        currentUser.socket.on('authCode', (data) => {
-            console.log('Recived auth code');
-            console.log(data);
-            talkToIt.arguments.push(data.code);
-            ws.send(JSON.stringify(talkToIt));
+        currentUser.forEach((socket) => {
+            socket.on('authCode', (data) => {
+                console.log('Recived auth code');
+                console.log(data);
+                talkToIt.arguments.push(data.code);
+                ws.send(JSON.stringify(talkToIt));
+            });
+
         });
     }
 
@@ -93,8 +95,10 @@ var authIt = (data) => {
 
         //Everything's been authenticated, lets start sending commands.
         if(!authenticated){
-            currentUser.socket.emit('authenticated', undefined);
-            controlIt();
+            currentUser.forEach((socket) => {
+                socket.emit('authenticated', undefined);
+                controlIt();
+            });
             authenticated = true;
         }
     }
@@ -129,8 +133,10 @@ io.on('connection', (socket) => {
     console.log('New user connected');
 
     //saves the current socket in external variable so other events can use it
-    currentUser.socket = socket;
-    currentUser.socket.emit('currentData', currentDataObj);
+    currentUser.push(socket);
+    currentUser.forEach( (socket) => {
+        socket.emit('currentData', currentDataObj);
+    });
 
     if(!authenticated){
             //tells gm to authentication needs to happen
@@ -155,26 +161,27 @@ server.listen(8090, () =>{
 //remote control
 var controlIt = () => {
     console.log('Controlling it');
-    currentUser.socket.on('command', (data) => {
-        console.log(data);
+    currentUser.forEach((socket) =>{
+        socket.on('command', (data) => {
+            console.log(data);
 
-        switch(data.command) {
-            case "nextSong":
-                ws.send(command.nextSong);
-                console.log('sending command to next song');
-                break;
+            switch(data.command) {
+                case "nextSong":
+                    ws.send(command.nextSong);
+                    console.log('sending command to next song');
+                    break;
 
-            case "previousSong":
-                ws.send(command.previousSong);
-                console.log('prev song');
-                break;
+                case "previousSong":
+                    ws.send(command.previousSong);
+                    console.log('prev song');
+                    break;
 
-            case "playPause":
-                ws.send(command.playPause);
-                console.log('play pause');
-                break;
-        }
+                case "playPause":
+                    ws.send(command.playPause);
+                    console.log('play pause');
+                    break;
+            }
 
+        });
     });
 };
-
