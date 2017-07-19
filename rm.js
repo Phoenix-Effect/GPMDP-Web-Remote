@@ -37,12 +37,25 @@ var currentDataObj = {};
 
 //Latest content
 var currentData = (data) => {
+    if(data.channel === 'volume'){
+        currentDataObj.volume = data.payload;
+    }
+
+    if(data.channel === 'time'){
+        currentDataObj.currentTime = data.payload.current;
+        currentDataObj.totalTime = data.payload.total;
+    }
+
     if(data.channel === 'track'){
         currentDataObj.title = data.payload.title;
         currentDataObj.artist = data.payload.artist;
         currentDataObj.album = data.payload.album;
         currentDataObj.albumArt = data.payload.albumArt;
-       // console.log(currentDataObj);
+        console.log(currentDataObj);
+    }
+
+    if(data.channel === 'shuffle'){
+        currentDataObj.shuffle = data.payload;
         console.log(data);
     }
 
@@ -52,12 +65,6 @@ var currentData = (data) => {
     catch(err){
         console.log('No user connected at the moment');
     }
-
-/*
-    if(data.channel === 'time'){
-        console.log(data.payload.current);
-    }
-    */
 };
 
 

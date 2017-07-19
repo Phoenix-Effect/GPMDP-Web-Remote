@@ -5,29 +5,34 @@
 //socket starting
 const socket = io.connect();
 
+//helpful functions
+var milToMin = (millis)  => {
+    var minutes = Math.floor(millis / 60000);
+    var seconds = ((millis % 60000) / 1000).toFixed(0);
+    return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+};
+
 //events
 //got request from server to authenticate
 socket.on('getCode', (data) =>{
-   console.log('Please send authentication data');
-   /*
-    document.addEventListener("DOMContentLoaded", function(event) {
-        document.getElementById("auth-form").style.display="inline";
-        console.log("DOM fully loaded and parsed");
-    });
-    */
-   document.getElementById("auth-form").style.display="inline";
+    console.log('Please send authentication data');
+    document.getElementById("auth-box").style.display="inline";
 });
 
-//when authenticated
 socket.on('authenticated', (data) =>{
     console.log('Authenticated!');
-    document.getElementById("auth-form").style.display="none";
+    document.getElementById("auth-box").style.display="none";
 });
 
 socket.on('currentData', (data) =>{
     console.log('Got current data!');
     console.log(data);
-    document.getElementById("currentlyPlaying").innerText = data.title;
+    document.getElementById("album-box").style.backgroundImage = 'url('+data.albumArt+')';
+    document.getElementById("song-name").innerText = data.title;
+    document.getElementById("artist-name").innerText = data.artist;
+    document.getElementById("current-volume").innerText = data.volume;
+    document.getElementById("current-time").innerText = milToMin(data.currentTime);
+    document.getElementById("total-time").innerText = milToMin(data.totalTime);
 });
 
 //emit stuff
