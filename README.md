@@ -1,5 +1,5 @@
-# GDMP Remote
-This is a simple remote for  [Google music desktop player](https://www.googleplaymusicdesktopplayer.com/)
+# GPDMP Remote
+This is a simple remote for  [Google play music desktop player](https://www.googleplaymusicdesktopplayer.com/)
 
 Its in very early stages so contains plenty of bugs! You can run it by downloading it, installing dependencies by running
 
