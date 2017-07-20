@@ -31,6 +31,9 @@ socket.on('currentData', (data) =>{
     document.getElementById("song-name").innerText = data.title;
     document.getElementById("artist-name").innerText = data.artist;
     document.getElementById("current-volume").innerText = data.volume;
+});
+
+socket.on('currentTime', (data) => {
     document.getElementById("current-time").innerText = milToMin(data.currentTime);
     document.getElementById("total-time").innerText = milToMin(data.totalTime);
 });

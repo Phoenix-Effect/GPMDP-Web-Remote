@@ -32,6 +32,7 @@ var authenticated = false;
 var currentDataObj = {};
 var currentUser = [];
 var socketMaybe = {};
+var currentTime = {};
 
 //Latest content
 var currentData = (data) => {
@@ -40,8 +41,16 @@ var currentData = (data) => {
     }
 
     if(data.channel === 'time'){
-        currentDataObj.currentTime = data.payload.current;
-        currentDataObj.totalTime = data.payload.total;
+        currentTime.currentTime = data.payload.current;
+        currentTime.totalTime = data.payload.total;
+        try {
+            currentUser.forEach((socket) => {
+                socket.emit('currentTime', currentTime);
+            });
+        }
+        catch (err) {
+            console.log('No user connected at the moment');
+        }
     }
 
     if(data.channel === 'track'){
@@ -57,13 +66,15 @@ var currentData = (data) => {
         console.log(data);
     }
 
-    try{
-        currentUser.forEach( (socket) => {
-            socket.emit('currentData', currentDataObj);
-        });
-    }
-    catch(err){
-        console.log('No user connected at the moment');
+    if(data.channel !== 'time') {
+        try {
+            currentUser.forEach((socket) => {
+                socket.emit('currentData', currentDataObj);
+            });
+        }
+        catch (err) {
+            console.log('No user connected at the moment');
+        }
     }
 };
 
@@ -112,7 +123,7 @@ ws.on('message', (data) => {
     data = JSON.parse(data);
 
     //Authentication
-    if(data.channel === "connect"){
+    if(data.channel === "connect"  && !authenticated){
         {
             console.log('Handing it over to AuthIt');
             authIt(data);
