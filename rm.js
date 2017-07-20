@@ -31,6 +31,7 @@ var talkToIt = {
 var authenticated = false;
 var currentDataObj = {};
 var currentUser = [];
+var socketMaybe = {};
 
 //Latest content
 var currentData = (data) => {
@@ -133,6 +134,9 @@ io.on('connection', (socket) => {
     console.log('New user connected');
 
     //saves the current socket in external variable so other events can use it
+
+    socketMaybe.socket = socket;
+
     currentUser.push(socket);
     currentUser.forEach( (socket) => {
         socket.emit('currentData', currentDataObj);
@@ -146,11 +150,9 @@ io.on('connection', (socket) => {
             authIt.AuthData = "Auth data from within the client socket";
 
     } else {
-
-        controlIt();
         console.log('Should render remote');
-    }
-
+        controlIt();
+   }
 });
 
 //Start the server
@@ -161,27 +163,24 @@ server.listen(8090, () =>{
 //remote control
 var controlIt = () => {
     console.log('Controlling it');
-    currentUser.forEach((socket) =>{
-        socket.on('command', (data) => {
-            console.log(data);
+    socketMaybe.socket.on('command', (data) => {
+        console.log(data);
 
-            switch(data.command) {
-                case "nextSong":
-                    ws.send(command.nextSong);
-                    console.log('sending command to next song');
-                    break;
+        switch(data.command) {
+            case "nextSong":
+                ws.send(command.nextSong);
+                console.log('sending command to next song');
+                break;
 
-                case "previousSong":
-                    ws.send(command.previousSong);
-                    console.log('prev song');
-                    break;
+            case "previousSong":
+                ws.send(command.previousSong);
+                console.log('prev song');
+                break;
 
-                case "playPause":
-                    ws.send(command.playPause);
-                    console.log('play pause');
-                    break;
-            }
-
-        });
+            case "playPause":
+                ws.send(command.playPause);
+                console.log('play pause');
+                break;
+        }
     });
 };
