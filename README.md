@@ -10,3 +10,5 @@ npm install
 The web server runs on port 8090 by default but can be customized.
 
 This is my first nodejs app so things are still pretty wonky!
+
+![Remote screenshot](/public/screenshot.png?raw=true "Screenshot")
