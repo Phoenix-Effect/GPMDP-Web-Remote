@@ -31,6 +31,18 @@
         <input type="tel" class="form-control" id="authCode">
         <button class="button" onclick="sendCode();">Submit</button>
     </div>
+
+    <div class="extra-buttons">
+        <div class="column column-25 no-padding">
+            <div onclick="volumeUp();" id="volume-up" class="volume">
+                Vol +
+            </div>
+            <div onclick="volumeDown();" id="volume-down" class="volume">
+                Vol -
+            </div>
+        </div>
+    </div>
+
     <!-- Player info -->
     <div id="player-info">
         <div onclick="prevSong();" class="prev-song column column-25">

@@ -59,3 +59,11 @@ var sendCode = () => {
     console.log(authCodeInput);
     socket.emit('authCode', { code: authCodeInput });
 };
+
+var volumeUp = () => {
+    socket.emit('command', { command: 'volumeUp'});
+};
+
+var volumeDown = () => {
+    socket.emit('command', { command: 'volumeDown'});
+};

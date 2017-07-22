@@ -8,9 +8,13 @@
 var nextSong = '{"namespace":"playback", "method":"forward"}';
 var previousSong = '{"namespace": "playback", "method": "rewind"}';
 var playPause = '{"namespace": "playback", "method": "playPause"}';
+var volumeUp = '{"namespace": "volume", "method": "increaseVolume", "arguments":[10]  }';
+var volumeDown = '{"namespace": "volume", "method": "decreaseVolume", "arguments":[10] }';
 
 module.exports = {
     nextSong,
     previousSong,
-    playPause
+    playPause,
+    volumeUp,
+    volumeDown
 };

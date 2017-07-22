@@ -3,11 +3,16 @@ body{
     font-family: 'Montserrat', sans-serif;
     margin: 0;
     margin-top: 20px;
+    color: white;
 }
 
 /* Helper classes */
 .transparent-background{
     background-color: rgba(0,0,0,0.6);
+}
+
+.no-padding{
+    padding: 0 !important;
 }
 
 #main-container{
@@ -95,6 +100,7 @@ body{
     padding: 20px;
     text-align: center;
     box-sizing: border-box;
+    vertical-align: middle;
 }
 
 .column-25{
@@ -111,4 +117,19 @@ body{
 
 .play-pause{
     background-color: #1f7e9a;
+}
+
+.volume{
+    box-sizing: border-box;
+    width: 100%;
+    height: 72px;
+    line-height: 4.5;
+}
+
+#volume-up{
+    background-color: #0f4539;
+}
+
+#volume-down{
+    background-color: #001f24;
 }

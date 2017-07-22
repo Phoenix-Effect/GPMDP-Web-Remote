@@ -192,6 +192,12 @@ var controlIt = () => {
                 ws.send(command.playPause);
                 console.log('play pause');
                 break;
+            case "volumeUp":
+                ws.send(command.volumeUp);
+                break;
+            case "volumeDown":
+                ws.send(command.volumeDown);
+                break;
         }
     });
 };
