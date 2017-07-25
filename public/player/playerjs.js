@@ -69,3 +69,11 @@ var volumeUp = () => {
 var volumeDown = () => {
     socket.emit('command', { command: 'volumeDown'});
 };
+
+var shuffle = () => {
+    console.log("Shuffle stuff");
+};
+
+var repeat = () => {
+    console.log("Repeat stuff");
+};

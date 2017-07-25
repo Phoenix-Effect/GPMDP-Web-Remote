@@ -25,7 +25,7 @@
         </div>
 </div>
     <!-- Progress bar -->
-    <progress id="progress-bar" value="22" max="200"></progress>
+    <progress id="progress-bar" value="0" max="10"></progress>
 
     <!-- Auth -->
     <div id="auth-box">
@@ -34,6 +34,7 @@
         <button class="button" onclick="sendCode();">Submit</button>
     </div>
 
+    <!-- Extra Controls -->
     <div class="extra-buttons">
         <div class="column column-25 no-padding">
             <div onclick="volumeUp();" id="volume-up" class="volume">
@@ -41,6 +42,15 @@
             </div>
             <div onclick="volumeDown();" id="volume-down" class="volume">
                 Vol -
+            </div>
+        </div>
+
+        <div class="column column-50 no-padding">
+            <div onclick="shuffle();" id="shuffle-box" class="volume">
+                Shuffle
+            </div>
+            <div onclick="repeat();" id="repeat-box" class="volume">
+                Repeat
             </div>
         </div>
     </div>

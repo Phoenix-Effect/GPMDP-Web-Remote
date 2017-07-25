@@ -137,3 +137,11 @@ body{
 #volume-down{
     background-color: #001f24;
 }
+
+#shuffle-box{
+    background-color: #0a231b;
+}
+
+#repeat-box{
+    background-color: #041324;
+}
