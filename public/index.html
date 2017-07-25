@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui">
     <link rel="stylesheet" href="player/player.css" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
     <meta name="apple-mobile-web-app-title" content="GP Remote" />
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -25,7 +26,7 @@
         </div>
 </div>
     <!-- Progress bar -->
-    <progress id="progress-bar" value="0" max="10"></progress>
+   <!-- <progress id="progress-bar" value="0" max="10"></progress> -->
 
     <!-- Auth -->
     <div id="auth-box">
@@ -38,19 +39,28 @@
     <div class="extra-buttons">
         <div class="column column-25 no-padding">
             <div onclick="volumeUp();" id="volume-up" class="volume">
-                Vol +
+                <i class="fa fa-volume-up fa-2x" aria-hidden="true"></i>
             </div>
             <div onclick="volumeDown();" id="volume-down" class="volume">
-                Vol -
+                <i class="fa fa-volume-down fa-2x" aria-hidden="true"></i>
             </div>
         </div>
 
         <div class="column column-50 no-padding">
             <div onclick="shuffle();" id="shuffle-box" class="volume">
-                Shuffle
+                <i class="fa fa-random fa-2x" aria-hidden="true"></i>
             </div>
             <div onclick="repeat();" id="repeat-box" class="volume">
-                Repeat
+                <i class="fa fa-repeat fa-2x" aria-hidden="true"></i>
+            </div>
+        </div>
+
+        <div class="column column-25 no-padding">
+            <div onclick="volumeUp();" id="thumbs-up" class="volume">
+                <i class="fa fa-thumbs-o-up fa-2x" aria-hidden="true"></i>
+            </div>
+            <div onclick="volumeDown();" id="thumbs-down" class="volume">
+                <i class="fa fa-thumbs-o-down fa-2x" aria-hidden="true"></i>
             </div>
         </div>
     </div>
@@ -58,13 +68,13 @@
     <!-- Player info -->
     <div id="player-info">
         <div onclick="prevSong();" class="prev-song column column-25">
-            Prev
+            <i class="fa fa-step-backward fa-2x" aria-hidden="true"></i>
         </div>
         <div onclick="playPause();" class="play-pause column column-50">
-            Play/Pause
+            <i class="fa fa-play fa-2x" aria-hidden="true"></i>
         </div>
         <div onclick="nextSong();" class="next-song column column-25">
-            Next
+            <i class="fa fa-step-forward fa-2x" aria-hidden="true"></i>
         </div>
     </div>
 </div>
