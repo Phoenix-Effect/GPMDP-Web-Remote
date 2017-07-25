@@ -115,11 +115,11 @@ body{
     width: 50%;
 }
 
-.prev-song, .next-song{
+#prev-song, #next-song{
     background-color: #0f4539;
 }
 
-.play-pause{
+#play-pause{
     background-color: #1f7e9a;
 }
 
@@ -128,6 +128,13 @@ body{
     width: 100%;
     height: 66px;
     line-height: 5.2;
+}
+
+#bar-container{
+    position: absolute;
+    height: 20px;
+    width: 100%;
+    bottom: 50px;
 }
 
 #volume-up{

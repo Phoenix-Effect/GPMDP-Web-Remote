@@ -20,13 +20,16 @@
         <span id="song-name">No data</span>
         <span id="artist-name"></span>
     </div>
+        <div id="bar-container">
+            <progress id="progress-bar" value="0" max="10"></progress>
+        </div>
         <div id="current-info" class="transparent-background">
             <div id="volume">Volume <span id="current-volume">xx</span></div>
             <div id="duration"><span id="current-time">x:xx</span> / <span id="total-time">x:xx</span></div>
         </div>
 </div>
     <!-- Progress bar -->
-   <!-- <progress id="progress-bar" value="0" max="10"></progress> -->
+
 
     <!-- Auth -->
     <div id="auth-box">
@@ -44,6 +47,9 @@
             <div onclick="volumeDown();" id="volume-down" class="volume">
                 <i class="fa fa-volume-down fa-2x" aria-hidden="true"></i>
             </div>
+            <div onclick="prevSong();" id="prev-song" class="volume">
+                <i class="fa fa-step-backward fa-2x" aria-hidden="true"></i>
+            </div>
         </div>
 
         <div class="column column-50 no-padding">
@@ -52,6 +58,9 @@
             </div>
             <div onclick="repeat();" id="repeat-box" class="volume">
                 <i class="fa fa-repeat fa-2x" aria-hidden="true"></i>
+            </div>
+            <div onclick="playPause();" id="play-pause" class="volume">
+                <i class="fa fa-play fa-2x" aria-hidden="true"></i>
             </div>
         </div>
 
@@ -62,19 +71,9 @@
             <div onclick="volumeDown();" id="thumbs-down" class="volume">
                 <i class="fa fa-thumbs-o-down fa-2x" aria-hidden="true"></i>
             </div>
-        </div>
-    </div>
-
-    <!-- Player info -->
-    <div id="player-info">
-        <div onclick="prevSong();" class="prev-song column column-25">
-            <i class="fa fa-step-backward fa-2x" aria-hidden="true"></i>
-        </div>
-        <div onclick="playPause();" class="play-pause column column-50">
-            <i class="fa fa-play fa-2x" aria-hidden="true"></i>
-        </div>
-        <div onclick="nextSong();" class="next-song column column-25">
-            <i class="fa fa-step-forward fa-2x" aria-hidden="true"></i>
+            <div onclick="nextSong();" id="next-song" class="volume">
+                <i class="fa fa-step-forward fa-2x" aria-hidden="true"></i>
+            </div>
         </div>
     </div>
 </div>
