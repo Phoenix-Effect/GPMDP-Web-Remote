@@ -95,6 +95,10 @@ body{
     color: white;
 }
 
+#progress-bar{
+    width: 100%;
+}
+
 .column{
     float: left;
     padding: 20px;

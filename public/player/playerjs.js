@@ -36,6 +36,8 @@ socket.on('currentData', (data) =>{
 socket.on('currentTime', (data) => {
     document.getElementById("current-time").innerText = milToMin(data.currentTime);
     document.getElementById("total-time").innerText = milToMin(data.totalTime);
+    document.getElementById("progress-bar").max = data.totalTime;
+    document.getElementById("progress-bar").value = data.currentTime;
 });
 
 //emit stuff
