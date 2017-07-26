@@ -2,7 +2,7 @@ body{
     background-color: #393F4D;
     font-family: 'Montserrat', sans-serif;
     margin: 0;
-    margin-top: 20px;
+    margin-top: 23px;
     color: white;
 }
 
@@ -126,7 +126,7 @@ body{
 .volume{
     box-sizing: border-box;
     width: 100%;
-    height: 66px;
+    height: 67px;
     line-height: 5.2;
 }
 
